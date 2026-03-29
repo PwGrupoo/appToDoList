@@ -13,7 +13,7 @@ export default function Login({ navigation }) {
 
   function entrar() {
     if (usuario.trim() === 'admin' && senha.trim() === 'admin') {
-      navigation.replace('MainTabs');
+      navigation.replace('Home');
     } else {
       console.log('Usuário ou senha inválidos');
     }

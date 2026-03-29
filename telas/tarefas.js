@@ -1,33 +1,54 @@
+import { useState } from 'react';
 import { View, Text, FlatList, StyleSheet, TouchableOpacity } from 'react-native';
 
-const DATA = [
-  { id: '1', title: 'Estudar React Native' },
-  { id: '2', title: 'Fazer atividade do professor' },
-  { id: '3', title: 'Criar layout do app' },
-  { id: '4', title: 'Testar navegação' },
-];
-
-const Item = ({ title }) => (
-  <View style={styles.item}>
-    <Text style={styles.title}>{title}</Text>
-  </View>
-);
-
 export default function Tarefas() {
+  const [tarefas, setTarefas] = useState([
+    { id: '1', title: 'Estudar React Native', data: '30/03/2026', concluida: false },
+    { id: '2', title: 'Fazer atividade do professor', data: '31/03/2026', concluida: false },
+    { id: '3', title: 'Criar layout do app', data: '01/04/2026', concluida: true },
+    { id: '4', title: 'Testar navegação', data: '02/04/2026', concluida: false },
+  ]);
+
+  function marcarTarefa(id) {
+    const listaNova = tarefas.map(function (item) {
+      if (item.id === id) {
+        return {
+          ...item,
+          concluida: !item.concluida,
+        };
+      } else {
+        return item;
+      }
+    });
+
+    setTarefas(listaNova);
+  }
+
   return (
     <View style={styles.container}>
-
       <FlatList
-        data={DATA}
-        renderItem={({ item }) => <Item title={item.title} />}
-        keyExtractor={item => item.id}
-        contentContainerStyle={{ paddingBottom: 20 }}
+        data={tarefas}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => (
+          <TouchableOpacity
+            style={styles.item}
+            onPress={() => marcarTarefa(item.id)}
+          >
+            <Text style={styles.checkbox}>
+              {item.concluida ? '☑' : '☐'}
+            </Text>
+
+            <View>
+              <Text style={styles.title}>{item.title}</Text>
+              <Text style={styles.data}>{item.data}</Text>
+            </View>
+          </TouchableOpacity>
+        )}
       />
 
-      <TouchableOpacity style={styles.floatingButton}>
-        <Text style={styles.floatingButtonText}>+</Text>
+      <TouchableOpacity style={styles.botao}>
+        <Text style={styles.botaoTexto}>+</Text>
       </TouchableOpacity>
-
     </View>
   );
 }
@@ -35,39 +56,51 @@ export default function Tarefas() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fceeb4',
+    backgroundColor: '#fff8da',
     paddingTop: 20,
   },
 
   item: {
     backgroundColor: '#FFF8EA',
-    padding: 20,
-    marginVertical: 8,
     marginHorizontal: 16,
+    marginVertical: 8,
+    padding: 16,
     borderRadius: 16,
-    elevation: 3,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+
+  checkbox: {
+    fontSize: 22,
+    color: '#F2A51A',
+    marginRight: 12,
   },
 
   title: {
     fontSize: 16,
     color: '#5C4300',
-    fontWeight: '600',
+    fontWeight: 'bold',
   },
 
-  floatingButton: {
+  data: {
+    fontSize: 13,
+    color: '#7A5A00',
+    marginTop: 4,
+  },
+
+  botao: {
     position: 'absolute',
     right: 20,
     bottom: 20,
+    backgroundColor: '#F2A51A',
     width: 60,
     height: 60,
     borderRadius: 30,
-    backgroundColor: '#F2A51A',
-    alignItems: 'center',
     justifyContent: 'center',
-    elevation: 6,
+    alignItems: 'center',
   },
 
-  floatingButtonText: {
+  botaoTexto: {
     fontSize: 30,
     color: '#FFF8EA',
   },

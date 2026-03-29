@@ -4,22 +4,22 @@ const DATA = [
   {
     id: '1',
     nome: 'Gustavo',
-    imagem: ('../assets/dev1.png'),
+    imagem: require('../assets/gustavo.png'),
   },
   {
     id: '2',
     nome: 'Leonni',
-    imagem: ('../assets/dev2.png'),
+    imagem: require('../assets/leonni.png'),
   },
   {
     id: '3',
     nome: 'Henzo',
-    imagem: ('../assets/dev3.png'),
+    imagem: require('../assets/henzo.png'),
   },
   {
     id: '4',
     nome: 'Matheus',
-    imagem: ('../assets/dev4.png'),
+    imagem: require('../assets/matheus.png'),
   },
 ];
 
@@ -38,7 +38,7 @@ export default function Desenvolvedores() {
         renderItem={({ item }) => (
           <Item nome={item.nome} imagem={item.imagem} />
         )}
-        keyExtractor={item => item.id}
+        keyExtractor={(item) => item.id}
         contentContainerStyle={{ paddingBottom: 20 }}
       />
     </View>
