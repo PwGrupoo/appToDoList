@@ -12,7 +12,7 @@ export default function Splash({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <StatusBar barStyle="dark-content" backgroundColor="#F5BC2E" />
+      <StatusBar barStyle="light-content" backgroundColor="#2563eb" />
 
       <View style={styles.logoBox}>
         <Image
@@ -22,7 +22,7 @@ export default function Splash({ navigation }) {
         />
       </View>
 
-      <Text style={styles.title}>To Do List</Text>
+      <Text style={styles.title}>PrjToDo</Text>
       <Text style={styles.subtitle}>Organize suas tarefas com simplicidade</Text>
     </View>
   );
@@ -31,37 +31,39 @@ export default function Splash({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F5BC2E',
+    backgroundColor: '#2563eb',
     alignItems: 'center',
     justifyContent: 'center',
     paddingHorizontal: 24,
   },
   logoBox: {
-    width: 120,
-    height: 120,
-    borderRadius: 40,
+    width: 110,
+    height: 110,
+    borderRadius: 28,
+    backgroundColor: 'rgba(255,255,255,0.15)',
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 28,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 8 },
-    shadowOpacity: 0.15,
-    shadowRadius: 12,
-    elevation: 8,
+    shadowOpacity: 0.2,
+    shadowRadius: 16,
+    elevation: 10,
   },
   logo: {
-    width: 120,
-    height: 120,
+    width: 72,
+    height: 72,
   },
   title: {
-    fontSize: 32,
+    fontSize: 34,
     fontWeight: 'bold',
-    color: '#5C4300',
-    marginBottom: 8,
+    color: '#ffffff',
+    marginBottom: 10,
+    letterSpacing: -0.5,
   },
   subtitle: {
-    fontSize: 16,
-    color: '#7A5A00',
+    fontSize: 15,
+    color: 'rgba(255,255,255,0.75)',
     textAlign: 'center',
   },
 });

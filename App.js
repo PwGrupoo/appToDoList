@@ -30,14 +30,10 @@ export default function App() {
           name="Home"
           component={Home}
           options={{
-            title: 'Home',
-            headerStyle: {
-              backgroundColor: '#F7D54A',
-            },
-            headerTintColor: '#5C4300',
-            headerTitleStyle: {
-              fontWeight: 'bold',
-            },
+            title: 'PrjToDo',
+            headerStyle: { backgroundColor: '#2563eb' },
+            headerTintColor: '#ffffff',
+            headerTitleStyle: { fontWeight: 'bold' },
           }}
         />
 
@@ -45,14 +41,10 @@ export default function App() {
           name="Tarefas"
           component={Tarefas}
           options={{
-            title: 'Tarefas',
-            headerStyle: {
-              backgroundColor: '#F7D54A',
-            },
-            headerTintColor: '#5C4300',
-            headerTitleStyle: {
-              fontWeight: 'bold',
-            },
+            title: 'Minhas Tarefas',
+            headerStyle: { backgroundColor: '#2563eb' },
+            headerTintColor: '#ffffff',
+            headerTitleStyle: { fontWeight: 'bold' },
           }}
         />
 
@@ -61,13 +53,9 @@ export default function App() {
           component={Desenvolvedores}
           options={{
             title: 'Desenvolvedores',
-            headerStyle: {
-              backgroundColor: '#F7D54A',
-            },
-            headerTintColor: '#5C4300',
-            headerTitleStyle: {
-              fontWeight: 'bold',
-            },
+            headerStyle: { backgroundColor: '#2563eb' },
+            headerTintColor: '#ffffff',
+            headerTitleStyle: { fontWeight: 'bold' },
           }}
         />
 
@@ -75,14 +63,10 @@ export default function App() {
           name="Cep"
           component={Cep}
           options={{
-            title: 'CEP',
-            headerStyle: {
-              backgroundColor: '#F7D54A',
-            },
-            headerTintColor: '#5C4300',
-            headerTitleStyle: {
-              fontWeight: 'bold',
-            },
+            title: 'Consultar CEP',
+            headerStyle: { backgroundColor: '#2563eb' },
+            headerTintColor: '#ffffff',
+            headerTitleStyle: { fontWeight: 'bold' },
           }}
         />
       </Stack.Navigator>

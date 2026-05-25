@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { View, Text, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, TextInput, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 
 export default function Cep() {
   const [cep, setCep] = useState('');
@@ -11,67 +11,94 @@ export default function Cep() {
   const [estado, setEstado] = useState('');
 
   return (
-    <View style={styles.container}>
-      
-      <Text style={styles.label}>CEP</Text>
-      <TextInput style={styles.input} value={cep} onChangeText={setCep} />
+    <ScrollView style={styles.container} contentContainerStyle={styles.content}>
 
-      <Text style={styles.label}>Logradouro</Text>
-      <TextInput style={styles.input} value={logradouro} onChangeText={setLogradouro} />
+      <View style={styles.card}>
+        {[
+          { label: 'CEP', value: cep, setter: setCep },
+          { label: 'Logradouro', value: logradouro, setter: setLogradouro },
+          { label: 'Número', value: numero, setter: setNumero },
+          { label: 'Complemento', value: complemento, setter: setComplemento },
+          { label: 'Bairro', value: bairro, setter: setBairro },
+          { label: 'Cidade', value: cidade, setter: setCidade },
+          { label: 'Estado', value: estado, setter: setEstado },
+        ].map(({ label, value, setter }) => (
+          <View key={label} style={styles.group}>
+            <Text style={styles.label}>{label}</Text>
+            <TextInput
+              style={styles.input}
+              value={value}
+              onChangeText={setter}
+              placeholderTextColor="#94a3b8"
+            />
+          </View>
+        ))}
 
-      <Text style={styles.label}>Número</Text>
-      <TextInput style={styles.input} value={numero} onChangeText={setNumero} />
+        <TouchableOpacity style={styles.botao}>
+          <Text style={styles.botaoTexto}>Salvar</Text>
+        </TouchableOpacity>
+      </View>
 
-      <Text style={styles.label}>Complemento</Text>
-      <TextInput style={styles.input} value={complemento} onChangeText={setComplemento} />
-
-      <Text style={styles.label}>Bairro</Text>
-      <TextInput style={styles.input} value={bairro} onChangeText={setBairro} />
-
-      <Text style={styles.label}>Cidade</Text>
-      <TextInput style={styles.input} value={cidade} onChangeText={setCidade} />
-
-      <Text style={styles.label}>Estado</Text>
-      <TextInput style={styles.input} value={estado} onChangeText={setEstado} />
-
-      <TouchableOpacity style={styles.botao}>
-        <Text style={styles.botaoTexto}>Salvar</Text>
-      </TouchableOpacity>
-
-    </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fceeb4',
+    backgroundColor: '#f0f4f8',
+  },
+  content: {
+    padding: 16,
+    paddingBottom: 40,
+  },
+  card: {
+    backgroundColor: '#ffffff',
+    borderRadius: 14,
     padding: 20,
+    borderWidth: 1,
+    borderColor: '#e2e8f0',
+    shadowColor: '#0f172a',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.06,
+    shadowRadius: 8,
+    elevation: 3,
   },
-
+  group: {
+    marginBottom: 14,
+  },
   label: {
-    marginTop: 10,
-    fontWeight: 'bold',
-    color: '#5C4300',
+    fontSize: 13,
+    fontWeight: '700',
+    color: '#334155',
+    marginBottom: 6,
+    letterSpacing: 0.2,
   },
-
   input: {
-    backgroundColor: '#FFF8EA',
-    padding: 10,
-    borderRadius: 10,
-    marginTop: 5,
+    backgroundColor: '#f8fafc',
+    borderWidth: 1.5,
+    borderColor: '#e2e8f0',
+    borderRadius: 9,
+    paddingHorizontal: 14,
+    paddingVertical: 11,
+    fontSize: 15,
+    color: '#0f172a',
   },
-
   botao: {
-    backgroundColor: '#F2A51A',
-    padding: 15,
+    backgroundColor: '#2563eb',
+    paddingVertical: 15,
     borderRadius: 10,
-    marginTop: 20,
     alignItems: 'center',
+    marginTop: 8,
+    shadowColor: '#2563eb',
+    shadowOffset: { width: 0, height: 6 },
+    shadowOpacity: 0.3,
+    shadowRadius: 10,
+    elevation: 5,
   },
-
   botaoTexto: {
-    color: '#FFF',
+    color: '#ffffff',
     fontWeight: 'bold',
+    fontSize: 15,
   },
 });

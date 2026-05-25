@@ -22,6 +22,9 @@ export default function Login({ navigation }) {
   return (
     <View style={styles.container}>
       <View style={styles.topArea}>
+        <View style={styles.logoBadge}>
+          <Text style={styles.logoBadgeText}>✓</Text>
+        </View>
         <Text style={styles.title}>Bem-vindo</Text>
         <Text style={styles.subtitle}>Faça login para continuar</Text>
       </View>
@@ -31,6 +34,7 @@ export default function Login({ navigation }) {
         <TextInput
           style={styles.input}
           placeholder="Digite seu usuário"
+          placeholderTextColor="#94a3b8"
           value={usuario}
           onChangeText={setUsuario}
         />
@@ -39,6 +43,7 @@ export default function Login({ navigation }) {
         <TextInput
           style={styles.input}
           placeholder="Digite sua senha"
+          placeholderTextColor="#94a3b8"
           secureTextEntry
           value={senha}
           onChangeText={setSenha}
@@ -55,57 +60,79 @@ export default function Login({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F7D54A',
+    backgroundColor: '#2563eb',
   },
   topArea: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    paddingHorizontal: 24,
+  },
+  logoBadge: {
+    width: 56,
+    height: 56,
+    borderRadius: 16,
+    backgroundColor: 'rgba(255,255,255,0.2)',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 20,
+  },
+  logoBadgeText: {
+    fontSize: 26,
+    color: '#fff',
+    fontWeight: 'bold',
   },
   title: {
-    fontSize: 32,
+    fontSize: 30,
     fontWeight: 'bold',
-    color: '#5C4300',
+    color: '#ffffff',
+    letterSpacing: -0.5,
   },
   subtitle: {
-    fontSize: 16,
-    color: '#7A5A00',
+    fontSize: 15,
+    color: 'rgba(255,255,255,0.7)',
     marginTop: 8,
   },
   card: {
-    backgroundColor: '#FFF8EA',
-    borderTopLeftRadius: 30,
-    borderTopRightRadius: 30,
-    padding: 24,
-    paddingBottom: 40,
+    backgroundColor: '#ffffff',
+    borderTopLeftRadius: 28,
+    borderTopRightRadius: 28,
+    padding: 28,
+    paddingBottom: 44,
   },
   label: {
-    fontSize: 15,
-    color: '#7A5A00',
-    marginBottom: 8,
-    marginTop: 10,
-    fontWeight: '600',
+    fontSize: 13,
+    fontWeight: '700',
+    color: '#334155',
+    marginBottom: 6,
+    marginTop: 14,
+    letterSpacing: 0.3,
   },
   input: {
-    backgroundColor: '#FFF2CC',
-    borderWidth: 1,
-    borderColor: '#F2C94C',
-    borderRadius: 14,
+    backgroundColor: '#f8fafc',
+    borderWidth: 1.5,
+    borderColor: '#e2e8f0',
+    borderRadius: 10,
     paddingHorizontal: 16,
-    paddingVertical: 14,
-    fontSize: 16,
-    color: '#5C4300',
+    paddingVertical: 13,
+    fontSize: 15,
+    color: '#0f172a',
   },
   button: {
-    backgroundColor: '#F2A51A',
-    paddingVertical: 16,
-    borderRadius: 16,
+    backgroundColor: '#2563eb',
+    paddingVertical: 15,
+    borderRadius: 10,
     alignItems: 'center',
     marginTop: 24,
+    shadowColor: '#2563eb',
+    shadowOffset: { width: 0, height: 6 },
+    shadowOpacity: 0.35,
+    shadowRadius: 12,
+    elevation: 6,
   },
   buttonText: {
-    color: '#FFF8EA',
-    fontSize: 18,
+    color: '#ffffff',
+    fontSize: 16,
     fontWeight: 'bold',
   },
 });
