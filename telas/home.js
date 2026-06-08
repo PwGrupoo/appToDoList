@@ -1,8 +1,8 @@
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
 
 export default function Home({ navigation }) {
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container} contentContainerStyle={styles.content}>
 
       <View style={styles.hero}>
         <Text style={styles.heroLabel}>✦ Organize. Foque. Conquiste.</Text>
@@ -12,102 +12,107 @@ export default function Home({ navigation }) {
         </Text>
       </View>
 
-      <View style={styles.buttons}>
-        <TouchableOpacity
-          style={styles.buttonPrimary}
-          onPress={() => navigation.navigate('Tarefas')}
-        >
-          <Text style={styles.buttonPrimaryText}>Ver Minhas Tarefas</Text>
-        </TouchableOpacity>
+      <Text style={styles.sectionTitle}>Cadastros</Text>
 
-        <TouchableOpacity
-          style={styles.buttonOutline}
-          onPress={() => navigation.navigate('Desenvolvedores')}
-        >
-          <Text style={styles.buttonOutlineText}>Ver Desenvolvedores</Text>
-        </TouchableOpacity>
+      <TouchableOpacity
+        style={[styles.card, { borderLeftColor: '#2563eb' }]}
+        onPress={() => navigation.navigate('CadastroUsuario')}
+      >
+        <Text style={styles.cardIcon}>👤</Text>
+        <View style={styles.cardInfo}>
+          <Text style={styles.cardTitle}>Cadastrar Usuário</Text>
+          <Text style={styles.cardSub}>Adicione um novo usuário ao sistema</Text>
+        </View>
+        <Text style={styles.cardArrow}>›</Text>
+      </TouchableOpacity>
 
-        <TouchableOpacity
-          style={styles.buttonOutline}
-          onPress={() => navigation.navigate('Cep')}
-        >
-          <Text style={styles.buttonOutlineText}>Consultar CEP</Text>
-        </TouchableOpacity>
-      </View>
+      <TouchableOpacity
+        style={[styles.card, { borderLeftColor: '#d97706' }]}
+        onPress={() => navigation.navigate('CadastroTarefa')}
+      >
+        <Text style={styles.cardIcon}>📋</Text>
+        <View style={styles.cardInfo}>
+          <Text style={styles.cardTitle}>Cadastrar Tarefa</Text>
+          <Text style={styles.cardSub}>Crie e organize suas tarefas</Text>
+        </View>
+        <Text style={styles.cardArrow}>›</Text>
+      </TouchableOpacity>
 
-    </View>
+      <TouchableOpacity
+        style={[styles.card, { borderLeftColor: '#7c3aed' }]}
+        onPress={() => navigation.navigate('CadastroStatus')}
+      >
+        <Text style={styles.cardIcon}>🏷️</Text>
+        <View style={styles.cardInfo}>
+          <Text style={styles.cardTitle}>Cadastrar Status</Text>
+          <Text style={styles.cardSub}>Defina os status das tarefas</Text>
+        </View>
+        <Text style={styles.cardArrow}>›</Text>
+      </TouchableOpacity>
+
+      <Text style={styles.sectionTitle}>Consultas</Text>
+
+      <TouchableOpacity
+        style={[styles.card, { borderLeftColor: '#0891b2' }]}
+        onPress={() => navigation.navigate('Tarefas')}
+      >
+        <Text style={styles.cardIcon}>📂</Text>
+        <View style={styles.cardInfo}>
+          <Text style={styles.cardTitle}>Ver Tarefas</Text>
+          <Text style={styles.cardSub}>Acompanhe todas as suas tarefas</Text>
+        </View>
+        <Text style={styles.cardArrow}>›</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        style={[styles.card, { borderLeftColor: '#64748b' }]}
+        onPress={() => navigation.navigate('Desenvolvedores')}
+      >
+        <Text style={styles.cardIcon}>👥</Text>
+        <View style={styles.cardInfo}>
+          <Text style={styles.cardTitle}>Desenvolvedores</Text>
+          <Text style={styles.cardSub}>Equipe do projeto</Text>
+        </View>
+        <Text style={styles.cardArrow}>›</Text>
+      </TouchableOpacity>
+
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#f0f4f8',
-    paddingHorizontal: 24,
-    paddingTop: 64,
-    paddingBottom: 32,
-  },
-  hero: {
-    flex: 1,
-    justifyContent: 'center',
-  },
+  container: { flex: 1, backgroundColor: '#f0f4f8' },
+  content: { paddingHorizontal: 20, paddingTop: 48, paddingBottom: 40 },
+  hero: { marginBottom: 32 },
   heroLabel: {
-    fontSize: 11,
-    fontWeight: '700',
-    color: '#2563eb',
-    letterSpacing: 1,
-    textTransform: 'uppercase',
-    backgroundColor: '#eff6ff',
-    alignSelf: 'flex-start',
-    paddingHorizontal: 12,
-    paddingVertical: 5,
-    borderRadius: 999,
-    marginBottom: 20,
-    overflow: 'hidden',
+    fontSize: 11, fontWeight: '700', color: '#2563eb',
+    letterSpacing: 1, textTransform: 'uppercase',
+    backgroundColor: '#eff6ff', alignSelf: 'flex-start',
+    paddingHorizontal: 12, paddingVertical: 5, borderRadius: 999,
+    marginBottom: 16, overflow: 'hidden',
   },
   title: {
-    fontSize: 38,
-    fontWeight: 'bold',
-    color: '#0f172a',
-    letterSpacing: -1,
-    lineHeight: 44,
-    marginBottom: 16,
+    fontSize: 36, fontWeight: 'bold', color: '#0f172a',
+    letterSpacing: -1, lineHeight: 42, marginBottom: 12,
   },
-  subtitle: {
-    fontSize: 15,
-    color: '#64748b',
-    lineHeight: 22,
+  subtitle: { fontSize: 14, color: '#64748b', lineHeight: 22 },
+  sectionTitle: {
+    fontSize: 12, fontWeight: '800', color: '#94a3b8',
+    letterSpacing: 1.5, textTransform: 'uppercase',
+    marginBottom: 10, marginTop: 4,
   },
-  buttons: {
-    gap: 12,
+  card: {
+    backgroundColor: '#fff', borderRadius: 14, padding: 16,
+    flexDirection: 'row', alignItems: 'center',
+    marginBottom: 10, borderLeftWidth: 4,
+    borderTopWidth: 1, borderRightWidth: 1, borderBottomWidth: 1,
+    borderTopColor: '#e2e8f0', borderRightColor: '#e2e8f0', borderBottomColor: '#e2e8f0',
+    shadowColor: '#0f172a', shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.05, shadowRadius: 4, elevation: 2,
   },
-  buttonPrimary: {
-    backgroundColor: '#2563eb',
-    paddingVertical: 16,
-    borderRadius: 10,
-    alignItems: 'center',
-    shadowColor: '#2563eb',
-    shadowOffset: { width: 0, height: 6 },
-    shadowOpacity: 0.3,
-    shadowRadius: 12,
-    elevation: 6,
-  },
-  buttonPrimaryText: {
-    color: '#ffffff',
-    fontSize: 15,
-    fontWeight: 'bold',
-  },
-  buttonOutline: {
-    backgroundColor: '#ffffff',
-    paddingVertical: 15,
-    borderRadius: 10,
-    alignItems: 'center',
-    borderWidth: 1.5,
-    borderColor: '#bfdbfe',
-  },
-  buttonOutlineText: {
-    color: '#2563eb',
-    fontSize: 15,
-    fontWeight: '600',
-  },
+  cardIcon: { fontSize: 26, marginRight: 14 },
+  cardInfo: { flex: 1 },
+  cardTitle: { fontSize: 15, fontWeight: '700', color: '#0f172a' },
+  cardSub: { fontSize: 12, color: '#94a3b8', marginTop: 2 },
+  cardArrow: { fontSize: 22, color: '#cbd5e1', fontWeight: 'bold' },
 });
